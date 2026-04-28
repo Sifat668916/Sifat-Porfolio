@@ -441,15 +441,16 @@ const Skills = () => {
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6">
-          <AnimatePresence mode="wait">
+        <div className="flex flex-wrap justify-center gap-6 min-h-[200px]">
+          <AnimatePresence>
             {skills[activeTab].map((skill, i) => (
               <motion.div
-                key={skill.name}
+                key={`${activeTab}-${skill.name}`}
+                layout
                 initial={{ opacity: 0, scale: 0.9, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ duration: 0.2 }}
                 className="p-8 bg-slate-900 border border-slate-800 rounded-2xl flex flex-col items-center justify-center gap-4 w-40 hover:border-purple-500/50 hover:-translate-y-2 transition-all shadow-xl group"
               >
                 <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center p-2 group-hover:scale-110 transition-transform">
